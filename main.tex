@@ -1,0 +1,105 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage[pdftex]{graphicx}
+\graphicspath{{../pdf/}{../jpeg/}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+
+\renewcommand{\arraystretch}{1.3}
+\usepackage{etoolbox}
+\apptocmd{\thebibliography}{\setlength{\itemsep}{0.01pt}}{}{}
+
+\usepackage{url}
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+
+\title{Reconfigurable Self-timed Dataflow Accelerator \&\\Fast Network Analysis in Silicon}
+
+\author{μSystems Group, School of Electrical and Electronic Engine
+ering, Newcastle University, UK}
+
+\maketitle
+
+
+\IEEEpeerreviewmaketitle
+
+\section*{Reconfigurable self-timed dataflow accelerator}
+Many real-life applications require dynamically
+reconfigurable pipelines to handle different data items differently or adjust
+the pipelines to the current operating mode. Reconfigurable synchronous
+pipelines are known since 1980s and are well
+supported by formal models and EDA tools. Reconfigurable asynchronous
+pipelines on the other hand, have neither a formal behavioural model, nor
+mature automation support, making them unattractive to industry.
+We will demo an asynchronous accelerator for ordinal pattern encoding~\cite{OPE} with
+reconfigurable pipeline depth. The hardware system has been designed, verified and synthesised
+using the DFS model~\cite{DFS} in Workcraft~\cite{workcraft_web}. This approach has been
+then validated with the fabrication of an ASIC (TSMC - 90nm technology) via
+Europractice. The chip has been eventually tested and studied in order to collect statistics
+and information, which will be useful for future research and designs.
+
+\begin{figure}[ht!]
+\begin{center}
+	\includegraphics[width=\linewidth]{FIG/voltage-var.pdf}
+	\caption{Voltage variation resiliency.}
+	\label{fig:voltage-var}
+\end{center}
+\vspace{-5mm}
+\end{figure}
+
+\begin{itemize}
+\item A high resiliency to the voltage variation is shown (Figure~\ref{fig:voltage-var}).
+This makes the self-timed chip suitable for systems that operate in critical environmental conditions (0.3 - 1.6V).
+\item Energy/time - pipeline depth dependency has been studied and will be presented.
+\item Energy/time - voltage variation will also be shown.
+\item The chip also implements a static pipeline. This is for studying the
+cost of reconfigurability, in terms of area, time and energy consumption.
+\item The DFS-based plugin used for the design, within Workcraft, will be presented.
+Some of the modules that compose the chip will be shown, simulated and verified.
+\end{itemize}
+
+\section*{Fast network analysis in silicon}
+The importance of having a fast and flexible approach to the analysis of networks is given by the high number of applications that rely on underlying graph-based models. In our case study, biological systems are modelled by graphs, and drugs can disconnect some of the connections within them. Parameters such as the average shortest path between nodes gives the resiliency to a particular drug, and help analyse the effectiveness of a medicine. In software, graph analysis is computationally expensive: the internal paths should be explored one at a time. %Multi-threads/cores processors and GPU might be of help, though 
+The maximum performance can be obtained by mapping the whole network into a piece of silicon and exploiting the hardware parallelism completely. In our demo, a network (defined as an xml file) can be automatically converted into a HDL design where the nodes are modelled with registers, and connections with wires. The network is then placed into a pre-designed system for the analysis (Figure~\ref{fig:fantasi}). The whole design is synthesised into Altera FPGA-based board. The FPGA fits this application well, providing the right tradeoff between speed and flexibility.
+
+\begin{figure}[ht!]
+\vspace{-3mm}
+\begin{center}
+	\includegraphics[width=\linewidth]{FIG/fantasi+.pdf}
+	\caption{Hardware system for fast network analysis.}
+	\label{fig:fantasi}
+\end{center}
+\vspace{-5mm}
+\end{figure}
+\noindent
+The demo will include:
+\begin{itemize}
+\item The flow from the network conversion to the analysis.
+\item The comparison between the C++ software implementation of the analysis algorithm and the hardware counterpart (2500x and more acceleration).
+\item Statistics and information gathered from different networks.
+\end{itemize}
+
+\begin{thebibliography}{3}
+
+\bibitem{DFS}
+	D. Sokolov, I. Poliakov, A. Yakovlev. \emph{``Analysis of static data flow structures''}.
+	Fundamenta Informaticae, volume 88,issue 4, pages 581 - 610. Publisher IOS Press. 2008.
+
+\bibitem{workcraft_web}
+	\textsc{Workcraft} homepage. \url{http://www.workcraft.org/}.	
+
+\bibitem{OPE}
+	C. Guo, W. Luk, S. Weston:
+	\emph{``Pipelined reconfigurable accelerator for ordinal pattern encoding''}.
+	Proc. Application-specific Systems, Architectures and Processors~(ASAP),
+	pp.~194--201, 2014.
+
+\end{thebibliography}
+
+
+
+
+% that's all folks
+\end{document}
