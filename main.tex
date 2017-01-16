@@ -65,8 +65,20 @@ Some of the modules that compose the chip will be shown, simulated and verified.
 \end{itemize}
 
 \section*{Fast network analysis in silicon}
-The importance of having a fast and flexible approach to the analysis of networks is given by the high number of applications that rely on underlying graph-based models. In our case study, biological systems are modelled by graphs, and drugs can disconnect some of the connections within them. Parameters such as the average shortest path between nodes gives the resiliency to a particular drug, and help analyse the effectiveness of a medicine. In software, graph analysis is computationally expensive: the internal paths should be explored one at a time. %Multi-threads/cores processors and GPU might be of help, though 
-The maximum performance can be obtained by mapping the whole network into a piece of silicon and exploiting the hardware parallelism completely. In our demo, a network (defined as an xml file) can be automatically converted into a HDL design where the nodes are modelled with registers, and connections with wires. The network is then placed into a pre-designed system for the analysis (Figure~\ref{fig:fantasi}). The whole design is synthesised into Altera FPGA-based board. The FPGA fits this application well, providing the right tradeoff between speed and flexibility.
+The importance of having a fast and flexible approach to the analysis of networks is given by
+the high number of applications that rely on underlying graph-based models. In our case study,
+biological systems are modelled by graphs, and drugs can disconnect some of the connections
+within them. Parameters such as the average shortest path gives the resiliency to a particular
+drug, and help analyse the effectiveness of a medicine. In software, graph analysis is
+computationally expensive: the internal paths should be explored one at a time. 
+The maximum performance can be obtained by mapping the whole network into a piece of silicon
+and exploiting the hardware parallelism completely. In our demo, a network (defined as an xml
+file) can be automatically converted into a HDL design where the nodes are modelled with
+registers, and connections with wires. The network is then placed into a pre-designed system
+for the analysis (Figure~\ref{fig:fantasi}). The whole design is synthesised into Altera
+FPGA-based board. FPGAs fit this application well, providing the right tradeoff between speed
+and flexibility. The developed accelerator is to be integrated into the drug discovery flow of
+our industrial partner.
 
 \begin{figure}[ht!]
 \vspace{-3mm}
@@ -81,8 +93,9 @@ The maximum performance can be obtained by mapping the whole network into a piec
 The demo will include:
 \begin{itemize}
 \item The flow from the network conversion to the analysis.
-\item The comparison between the C++ software implementation of the analysis algorithm and the hardware counterpart (thousands times faster).
-\item Statistics and information gathered from different networks.
+\item The comparison between the C++ software implementation of the analysis algorithm and the
+hardware counterpart (thousands times faster).
+\item Statistics gathered from different networks.
 \end{itemize}
 
 \begin{thebibliography}{3}
