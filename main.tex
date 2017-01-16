@@ -23,9 +23,11 @@
 
 \iffalse
 \begin{abstract}
-Many real-life applications require dynamically reconfigurable pipelines to handle incoming data items differently depending on their values or current operating mode. Reconfigurable asynchronous pipelines have neither a formal behavioural model, nor mature automation support. An asynchronous accelerator for ordinal pattern encoding, with reconfigurable pipeline depth, is shown. This has been designed, simulated and verified using the dataflow structure model of the EDA tool Workcraft; then fabricated using the TSMC 90nm technology.
+Many real-life applications require dynamically reconfigurable pipelines to handle incoming data items differently depending on their values or current operating mode. A demo will show the benefits of an asynchronous accelerator for ordinal pattern encoding with reconfigurable pipeline depth. This was designed, simulated and verified using dataflow structure formalism in Workcraft toolset. The self-timed chip, fabricated in TSMC 90nm, shows high resilience to voltage variation and configurable accuracy of the results.
 
-Applications that rely on underlying graph models foster the importance of having a fast and flexible approach to graph analysis. In order to support medicine discovery, biological systems are modelled by graphs, and drugs can disconnect some of the internal connections. Graphs are automatically converted into VHDL designs, which are synthesised into an FPGA for the analysis. Thousand times faster than in software. We will demo the projects using one stand.
+Applications with underlying graph models foster the importance of a fast and flexible approach to graph analysis. To support medicine discovery biological systems are modelled by graphs, and drugs can disconnect some of the connections. A demo will show how graphs can be automatically converted into VHDL designs, which are synthesised into a FPGA for the analysis: thousand times faster than in software.
+
+Single stand will be used for both case studies.
 \end{abstract}
 \fi
 
@@ -63,7 +65,8 @@ Europractice.
 The chip has been equipped with a testing infrastructure to collect statistics for future research. The most interesting results are: 
 \begin{itemize}
 \item High resilience of self-timed circuit to voltage variation~(0.3 - 1.6V), see Figure~\ref{fig:voltage-var} for sub-threshold measurements. This enables another degree of optimisation for energy/time interplay.
-\item Energy consumption and computation time can be dynamically regulated by the depth of the pipeline.
+%\item Energy consumption and computation time can be dynamically regulated by the depth of the pipeline.
+\item Accuracy of the results regulated by the depth of the pipeline.
 \item The cost of reconfigurability, in terms of area, computation time and energy consumption is negligible compared to the non-reconfigurable reference design.
 \item The \emph{dataflow structure} plugin of \textsc{Workcraft} supports the design, simulation, verification of asynchronous reconfigurable pipelines.
 \end{itemize}
